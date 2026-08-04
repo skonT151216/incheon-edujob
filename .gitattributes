@@ -1,0 +1,2 @@
+# 워크플로의 run 블록이 CRLF로 커밋되면 우분투 러너에서 \r 때문에 깨진다.
+* text=auto eol=lf

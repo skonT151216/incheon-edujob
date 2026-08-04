@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>인천에듀잡 · 인천 학교 기간제·강사 채용정보</title>
+<meta name="description" content="인천광역시교육청 채용공고를 과목·지역·학교급으로 골라 봅니다. 하루 세 번 갱신.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F766E'/%3E%3Cpath d='M16 8.2L25.8 12.8 16 17.4 6.2 12.8 16 8.2z' fill='white'/%3E%3Cpath d='M10.6 15.1v5.2c0 1.75 2.42 3.16 5.4 3.16s5.4-1.41 5.4-3.16v-5.2' stroke='%235EEAD4' stroke-width='2.2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#F6F8FA; --card:#fff; --line:#E4E9EF; --tx:#111827; --tx2:#5A6577; --tx3:#8B95A6;
+  --pri:#0F766E; --pri-bg:#E6F5F3; --warn:#B4530A; --warn-bg:#FEF1E3; --dim:#F1F4F8;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.04);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0E1116; --card:#171B22; --line:#262C36; --tx:#E8EDF4; --tx2:#9AA6B8; --tx3:#6E7A8C;
+    --pri:#5EEAD4; --pri-bg:#12312E; --warn:#FBBF77; --warn-bg:#39250F; --dim:#1E242D;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:Pretendard,-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+  font-size:15px;line-height:1.55;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+/* 헤더 */
+.top{position:sticky;top:0;z-index:30;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;letter-spacing:-.02em;flex:none}
+.logo em{color:var(--pri);font-style:normal}
+.sbox{position:relative;flex:1;max-width:420px}
+.sbox input{width:100%;height:38px;padding:0 34px 0 36px;border:1px solid var(--line);border-radius:10px;
+  background:var(--dim);color:var(--tx);font-size:14.5px;font-family:inherit;outline:none}
+.sbox input:focus{border-color:var(--pri);background:var(--card)}
+.sbox .ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx3);display:flex}
+.sbox .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;
+  color:var(--tx3);font-size:19px;line-height:1;padding:2px 6px}
+.navlink{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--tx2);
+  border:1px solid var(--line);border-radius:8px;padding:7px 10px;flex:none}
+.stamp{font-size:12.5px;color:var(--tx3);flex:none}
+@media(max-width:820px){.top-in .sbox{display:none}.stamp{display:none}}
+
+.msearch{display:none;padding:10px 16px 0;max-width:1180px;margin:0 auto}
+@media(max-width:820px){.msearch{display:block}}
+
+/* 요약 */
+.strip{background:var(--card);border-bottom:1px solid var(--line)}
+.strip-in{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;gap:26px}
+.m b{display:block;font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.m span{font-size:12.5px;color:var(--tx2)}
+.m.u b{color:var(--warn)}
+
+/* 레이아웃 */
+.page{max-width:1180px;margin:0 auto;padding:18px 16px 60px;display:grid;
+  grid-template-columns:212px 1fr;gap:22px;align-items:start}
+.side{position:sticky;top:70px;display:flex;flex-direction:column;gap:18px}
+.side .closeb{display:none}
+.fbox h3{margin:0 0 8px;font-size:12px;font-weight:700;color:var(--tx3);letter-spacing:.04em}
+.fbox ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;
+  max-height:290px;overflow:auto}
+.fbox button{width:100%;display:flex;justify-content:space-between;gap:8px;align-items:center;
+  border:0;background:none;color:var(--tx2);font-size:13.5px;padding:5px 8px;border-radius:7px;text-align:left}
+.fbox button:hover{background:var(--dim)}
+.fbox button[aria-pressed=true]{background:var(--pri-bg);color:var(--pri);font-weight:700}
+.fbox i{font-style:normal;font-size:11.5px;color:var(--tx3);flex:none}
+
+.tool{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.tool .n{font-size:13.5px;color:var(--tx2);margin-right:auto}
+.tool .n b{color:var(--tx);font-weight:700}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.seg button{border:0;background:none;color:var(--tx2);font-size:13px;padding:6px 11px;font-weight:600}
+.seg button[aria-pressed=true]{background:var(--pri);color:#fff}
+@media (prefers-color-scheme:dark){.seg button[aria-pressed=true]{color:#08211F}}
+.tgl{border:1px solid var(--line);background:var(--card);color:var(--tx2);font-size:13px;
+  font-weight:600;padding:6px 11px;border-radius:8px}
+.tgl[aria-pressed=true]{background:var(--pri);color:#fff;border-color:var(--pri)}
+@media (prefers-color-scheme:dark){.tgl[aria-pressed=true]{color:#08211F}}
+.fbtn{display:none;border:1px solid var(--line);background:var(--card);color:var(--tx2);
+  font-size:13px;font-weight:600;padding:6px 11px;border-radius:8px;align-items:center;gap:5px}
+
+/* 카드 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:11px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 15px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;transition:border-color .12s}
+.card:hover{border-color:var(--pri)}
+.card.off{opacity:.58}
+.chead{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.dday{font-size:11.5px;font-weight:800;padding:2.5px 7px;border-radius:6px;
+  background:var(--pri-bg);color:var(--pri);flex:none}
+.dday.hot{background:var(--warn-bg);color:var(--warn)}
+.dday.off{background:var(--dim);color:var(--tx3)}
+.jtag{font-size:11.5px;font-weight:600;color:var(--tx2);background:var(--dim);padding:2.5px 7px;border-radius:6px}
+.jtag.wait{color:var(--warn);background:var(--warn-bg)}
+.school{font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.subs{display:flex;gap:4px;flex-wrap:wrap}
+.sub{font-size:12px;font-weight:700;color:var(--pri);background:var(--pri-bg);padding:2px 7px;border-radius:6px}
+.sub.none{color:var(--tx3);background:var(--dim);font-weight:600}
+.ttl{font-size:13px;color:var(--tx2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden}
+.docs{font-size:12px;color:var(--tx3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{font-size:12.5px;color:var(--tx2);display:flex;flex-wrap:wrap;gap:4px 9px;
+  border-top:1px solid var(--line);padding-top:8px;margin-top:auto}
+.meta b{font-weight:700;color:var(--tx)}
+.empty{text-align:center;padding:60px 20px;color:var(--tx3)}
+.more{display:block;margin:18px auto 0;border:1px solid var(--line);background:var(--card);
+  color:var(--tx2);font-size:14px;font-weight:600;padding:10px 26px;border-radius:10px}
+
+.foot{max-width:1180px;margin:0 auto;padding:0 16px 40px;font-size:12.5px;color:var(--tx3);line-height:1.7}
+.foot b{color:var(--tx2)}
+.foot a{color:var(--pri);font-weight:600}
+
+@media(max-width:900px){
+  .page{grid-template-columns:1fr;padding-top:12px}
+  .side{position:fixed;inset:0;top:0;z-index:40;background:var(--bg);padding:16px;
+    overflow:auto;display:none;gap:22px}
+  .side.open{display:flex}
+  .side .closeb{display:block;position:sticky;top:0;align-self:flex-end;border:0;background:var(--pri);
+    color:#fff;font-weight:700;padding:8px 16px;border-radius:8px}
+  .fbtn{display:inline-flex}
+  .fbox ul{max-height:none}
+  .strip-in{gap:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="top-in">
+  <a class="logo" href="./" aria-label="인천에듀잡 홈">
+    <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="1" y="1" width="30" height="30" rx="9" fill="#0F766E"/>
+      <path d="M16 8.2L25.8 12.8 16 17.4 6.2 12.8 16 8.2z" fill="#fff"/>
+      <path d="M10.6 15.1v5.2c0 1.75 2.42 3.16 5.4 3.16s5.4-1.41 5.4-3.16v-5.2" stroke="#5EEAD4"
+        stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <path d="M25.8 12.8v4.6" stroke="#5EEAD4" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <b>인천<em>에듀잡</em></b>
+  </a>
+  <div class="sbox">
+    <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+    <input id="q" type="search" placeholder="학교명 · 과목 · 공고 제목 검색" autocomplete="off">
+    <button class="clr" id="clr" hidden aria-label="검색어 지우기">&times;</button>
+  </div>
+  <a class="navlink" href="https://www.ice.go.kr/ice/na/ntt/selectNttList.do?mi=10997&bbsId=1981"
+     target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+    <span>원본 게시판</span></a>
+  <span class="stamp" id="stamp"></span>
+</div></header>
+
+<div class="msearch"><div class="sbox">
+  <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+  <input id="q2" type="search" placeholder="학교명 · 과목 · 공고 제목 검색" autocomplete="off">
+</div></div>
+
+<div class="strip"><div class="strip-in">
+  <div class="m"><b id="s1">–</b><span>모집 중</span></div>
+  <div class="m u"><b id="s2">–</b><span>3일 내 마감</span></div>
+  <div class="m"><b id="s3">–</b><span>오늘 등록</span></div>
+</div></div>
+
+<div class="page">
+  <aside class="side" id="side">
+    <button class="closeb" id="closeb">닫기</button>
+    <div class="fbox"><h3>과목</h3><ul id="f-sub"></ul></div>
+    <div class="fbox"><h3>지역</h3><ul id="f-gu"></ul></div>
+    <div class="fbox"><h3>학교급</h3><ul id="f-lv"></ul></div>
+    <div class="fbox"><h3>직종</h3><ul id="f-job"></ul></div>
+  </aside>
+  <main>
+    <div class="tool">
+      <span class="n" id="count"></span>
+      <button class="fbtn" id="fbtn" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>필터</button>
+      <div class="seg" id="tabs"></div>
+      <div class="seg" id="sorts"></div>
+      <button class="tgl" id="showExp" aria-pressed="false">마감 포함</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>조건에 맞는 공고가 없습니다.</div>
+    <button class="more" id="more" hidden>더 보기</button>
+  </main>
+</div>
+
+<p class="foot">
+  인천광역시교육청 <b>채용공고</b> 게시판에서 가르치는 자리(기간제교사·시간강사·강사)를 모아 하루 세 번 갱신합니다.
+  카드를 누르면 <b>원문 공고</b>로 이동합니다.<br>
+  <b>지원 전 반드시 원문에서 마감일·제출서류·자격요건을 확인하세요.</b>
+  과목은 공고 제목과 본문에서 자동으로 뽑은 값이라 실제와 다를 수 있고, 찾지 못하면 ‘과목 미상’으로 둡니다.
+  사립학교 등 학교 홈페이지에만 올라오는 공고는 빠질 수 있습니다.<br>
+  ‘예고’ 탭은 <b>기간제교원 채용계획 사전공개</b> 게시판으로, 공고 전에 학교가 올리는 계획입니다.
+</p>
+
+<script>
+const $ = id => document.getElementById(id);
+const SORTS = [['due','마감임박'],['new','최신'],['work','근무시작']];
+const TABS  = [['job','공고'],['pre','예고']];
+const PAGE  = 60;
+let D = null, TODAY = '', hits = [], shown = 0;
+const S = { sub:'', gu:'', lv:'', job:'', sort:'due', exp:false, q:'', tab:'job' };
+
+const esc = s => String(s ?? '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const dday = (a, b) => Math.round((Date.parse(a + 'T00:00:00Z') - Date.parse(b + 'T00:00:00Z')) / 864e5);
+const md = s => s ? s.slice(5).replace('-', '.') : '';
+
+// 계약 기간을 '5개월', '1년'처럼 읽기 쉬운 말로 바꾼다. 하루 단위는 반올림하지 않는다.
+function span(a, b){
+  if(!a) return '';
+  if(!b) return md(a) + ' 시작';
+  const days = dday(b, a);
+  if(days < 45) return md(a) + '~' + md(b) + ' · ' + (days + 1) + '일';
+  const mo = Math.round(days / 30.4);
+  return md(a) + '~' + md(b) + ' · ' + (mo >= 12 && mo % 12 === 0 ? (mo / 12) + '년' : mo + '개월');
+}
+
+// ── 상태 ↔ 주소창. 필터를 건 화면을 그대로 공유할 수 있게 한다.
+function readURL(){
+  const p = new URLSearchParams(location.search);
+  for(const k of ['sub','gu','lv','job','q']) if(p.get(k)) S[k] = p.get(k);
+  // 주소창 값은 사람이 고칠 수 있으니 아는 값일 때만 받는다.
+  if(SORTS.some(([v]) => v === p.get('sort'))) S.sort = p.get('sort');
+  if(TABS.some(([v]) => v === p.get('tab'))) S.tab = p.get('tab');
+  S.exp = p.get('exp') === '1';
+}
+function writeURL(){
+  const p = new URLSearchParams();
+  for(const k of ['sub','gu','lv','job','q']) if(S[k]) p.set(k, S[k]);
+  if(S.sort !== 'due') p.set('sort', S.sort);
+  if(S.tab !== 'job') p.set('tab', S.tab);
+  if(S.exp) p.set('exp', '1');
+  const qs = p.toString();
+  history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+}
+
+function prep(){
+  TODAY = D.today;
+  for(const it of D.items){
+    it._dd = it.due ? dday(it.due, TODAY) : null;
+    it._txt = (it.t + ' ' + it.school + ' ' + it.job + ' ' + it.subject.join(' ') + ' ' +
+               it.gu + ' ' + it.level).toLowerCase();
+  }
+  for(const it of D.pre){
+    it._txt = (it.t + ' ' + it.school + ' ' + it.subject.join(' ')).toLowerCase();
+  }
+  $('stamp').textContent = D.built + ' 갱신';
+  const live = D.items.filter(x => !x.x);
+  $('s1').textContent = live.length.toLocaleString();
+  $('s2').textContent = live.filter(x => x._dd !== null && x._dd <= 3).length;
+  $('s3').textContent = D.items.filter(x => x.reg === TODAY).length;
+}
+
+// 필터 목록은 건수순이면 매번 순서가 바뀌어 찾기 어렵다. 가나다순으로 고정하고
+// '과목 미상'·'기타'만 맨 뒤로 보낸다.
+const ko = (a, b) => String(a).localeCompare(String(b), 'ko');
+const tail = v => v === '과목 미상' || v === '기타' || v.startsWith('기타');
+const fsort = (a, b) => (tail(a[0]) - tail(b[0])) || ko(a[0], b[0]);
+
+function drawFilters(){
+  const pool = D.items.filter(x => S.exp || !x.x);
+  const build = (key, get) => {
+    const c = {};
+    for(const x of pool) for(const v of get(x)) if(v) c[v] = (c[v] || 0) + 1;
+    const rows = Object.entries(c).sort(fsort);
+    $(key).innerHTML =
+      `<li><button data-v="">전체<i>${pool.length}</i></button></li>` +
+      rows.map(([v, n]) => `<li><button data-v="${esc(v)}">${esc(v)}<i>${n}</i></button></li>`).join('');
+  };
+  build('f-sub', x => x.subject.length ? x.subject : ['과목 미상']);
+  build('f-gu',  x => [x.gu]);
+  build('f-lv',  x => [x.level]);
+  build('f-job', x => x.job.split(',').map(s => s.trim()));
+  const mark = (key, cur) => {
+    for(const b of $(key).querySelectorAll('button')) b.setAttribute('aria-pressed', b.dataset.v === cur);
+  };
+  mark('f-sub', S.sub); mark('f-gu', S.gu); mark('f-lv', S.lv); mark('f-job', S.job);
+  $('sorts').innerHTML = SORTS.map(([v, l]) => `<button data-s="${v}">${l}</button>`).join('');
+  for(const b of $('sorts').children) b.setAttribute('aria-pressed', b.dataset.s === S.sort);
+  $('tabs').innerHTML = TABS.map(([v, l]) =>
+    `<button data-t="${v}">${l}<i style="font-style:normal;opacity:.6"> ${
+      v === 'job' ? D.items.filter(x => !x.x).length : D.pre.length}</i></button>`).join('');
+  for(const b of $('tabs').children) b.setAttribute('aria-pressed', b.dataset.t === S.tab);
+  $('showExp').setAttribute('aria-pressed', S.exp);
+}
+
+function filterJobs(){
+  const q = S.q.trim().toLowerCase();
+  let r = D.items.filter(x =>
+    (S.exp || !x.x) &&
+    (!S.sub || (S.sub === '과목 미상' ? !x.subject.length : x.subject.includes(S.sub))) &&
+    (!S.gu || x.gu === S.gu) &&
+    (!S.lv || x.level === S.lv) &&
+    (!S.job || x.job.split(',').map(s => s.trim()).includes(S.job)) &&
+    (!q || x._txt.includes(q)));
+  const by = {
+    due:  (a, b) => (a.x - b.x) || ((a.due || '9999') > (b.due || '9999') ? 1 : -1),
+    new:  (a, b) => (b.reg || '').localeCompare(a.reg || '') || b.id - a.id,
+    work: (a, b) => (a.workFrom || '9999').localeCompare(b.workFrom || '9999'),
+  }[S.sort];
+  return r.sort(by);
+}
+
+function filterPre(){
+  const q = S.q.trim().toLowerCase();
+  return D.pre.filter(x =>
+    (!S.sub || (S.sub === '과목 미상' ? !x.subject.length : x.subject.includes(S.sub))) &&
+    (!q || x._txt.includes(q)));
+}
+
+function cardJob(x){
+  const d = x._dd;
+  let badge = '<span class="dday off">마감일 확인</span>';
+  if(d !== null){
+    if(d < 0)       badge = `<span class="dday off">마감</span>`;
+    else if(d === 0) badge = `<span class="dday hot">오늘 마감</span>`;
+    else            badge = `<span class="dday${d <= 3 ? ' hot' : ''}">D-${d}</span>`;
+  }
+  const subs = x.subject.length
+    ? x.subject.map(s => `<span class="sub">${esc(s)}</span>`).join('')
+    : '<span class="sub none">과목 미상</span>';
+  // 접수가 아직 열리지 않은 건('대기중')은 먼저 알려 준다. 마감일만 보고 미리 넣는 일을 막는다.
+  const soon = x.open && x.open > TODAY ? `<span class="jtag wait">${md(x.open)} 접수시작</span>` : '';
+  const meta = [
+    x.due ? (x.open ? `접수 <b>${md(x.open)}~${md(x.due)}</b>` : `마감 <b>${md(x.due)}</b>`) : '',
+    span(x.workFrom, x.workTo),
+    x.n ? x.n + '명' : '',
+    x.gu, x.level,
+  ].filter(Boolean).map(s => `<span>${s}</span>`).join('');
+  return `<a class="card${x.x ? ' off' : ''}" href="${esc(x.u)}" target="_blank" rel="noopener">
+    <div class="chead">${badge}<span class="jtag">${esc(x.job)}</span>${soon}</div>
+    <div class="school">${esc(x.school)}</div>
+    <div class="subs">${subs}</div>
+    <div class="ttl">${esc(x.t)}</div>
+    ${x.docs ? `<div class="docs">📎 ${esc(x.docs)}</div>` : ''}
+    <div class="meta">${meta}</div></a>`;
+}
+
+function cardPre(x){
+  const subs = x.subject.length
+    ? x.subject.map(s => `<span class="sub">${esc(s)}</span>`).join('')
+    : '<span class="sub none">과목 미상</span>';
+  return `<a class="card" href="${esc(x.u)}" target="_blank" rel="noopener">
+    <div class="chead"><span class="jtag">사전공개</span><span class="jtag">${esc(x.reg || '')}</span></div>
+    <div class="school">${esc(x.school)}</div>
+    <div class="subs">${subs}</div>
+    <div class="ttl">${esc(x.t)}</div></a>`;
+}
+
+function run(reset = true){
+  if(reset){ hits = S.tab === 'pre' ? filterPre() : filterJobs(); shown = 0; $('grid').innerHTML = ''; }
+  const slice = hits.slice(shown, shown + PAGE);
+  $('grid').insertAdjacentHTML('beforeend',
+    slice.map(S.tab === 'pre' ? cardPre : cardJob).join(''));
+  shown += slice.length;
+  $('more').hidden = shown >= hits.length;
+  $('empty').hidden = hits.length > 0;
+  $('count').innerHTML = `<b>${hits.length.toLocaleString()}</b>건` +
+    (S.tab === 'job' && !S.exp ? ' 모집 중' : '');
+  writeURL();
+}
+
+// ── 이벤트
+const isMobile = () => matchMedia('(max-width:900px)').matches;
+function closePanel(){
+  if(!isMobile()) return;
+  $('side').classList.remove('open'); $('fbtn').setAttribute('aria-expanded', 'false');
+  scrollTo({ top: 0, behavior: 'smooth' });
+}
+function pick(key, field){
+  $(key).onclick = e => {
+    const b = e.target.closest('button'); if(!b) return;
+    S[field] = S[field] === b.dataset.v ? '' : b.dataset.v;
+    drawFilters(); run(); closePanel();
+  };
+}
+pick('f-sub', 'sub'); pick('f-gu', 'gu'); pick('f-lv', 'lv'); pick('f-job', 'job');
+$('sorts').onclick = e => { const b = e.target.closest('button'); if(!b) return;
+  S.sort = b.dataset.s; drawFilters(); run(); };
+$('tabs').onclick = e => { const b = e.target.closest('button'); if(!b) return;
+  S.tab = b.dataset.t; drawFilters(); run(); };
+$('showExp').onclick = () => { S.exp = !S.exp; drawFilters(); run(); };
+$('more').onclick = () => run(false);
+$('fbtn').onclick = () => { $('side').classList.add('open'); $('fbtn').setAttribute('aria-expanded','true'); };
+$('closeb').onclick = closePanel;
+
+let t = null;
+function onSearch(v){
+  S.q = v;
+  $('clr').hidden = !v;
+  if($('q').value !== v) $('q').value = v;
+  if($('q2').value !== v) $('q2').value = v;
+  clearTimeout(t); t = setTimeout(() => { drawFilters(); run(); }, 160);
+}
+$('q').oninput  = e => onSearch(e.target.value);
+$('q2').oninput = e => onSearch(e.target.value);
+$('clr').onclick = () => onSearch('');
+
+readURL();
+fetch('jobs.json', { cache: 'no-cache' })
+  .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => {
+    D = d; prep();
+    $('q').value = $('q2').value = S.q; $('clr').hidden = !S.q;
+    drawFilters(); run();
+  })
+  .catch(err => {
+    $('empty').hidden = false;
+    $('empty').textContent = '공고를 불러오지 못했습니다. 잠시 뒤 새로고침해 주세요. (' + err.message + ')';
+  });
+</script>
+</body>
+</html>

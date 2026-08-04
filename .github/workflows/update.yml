@@ -1,0 +1,41 @@
+name: 공고 수집
+
+on:
+  schedule:
+    # KST 07:00 / 13:00 / 18:00 (UTC 22:00 / 04:00 / 09:00)
+    - cron: '0 22,4,9 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '며칠 전 등록분까지 볼지'
+        default: '30'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 상세는 cache.json 에 있는 건 다시 받지 않는다. 평소엔 새 글 몇십 건뿐이라 몇 분이면 끝난다.
+      - name: 수집
+        run: python scrape.py --days ${{ inputs.days || '30' }} --max-pages 20 --pre-pages 4
+
+      - name: 커밋
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add jobs.json cache.json
+          git diff --staged --quiet && echo '변경 없음' && exit 0
+          git commit -m "공고 갱신 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')"
+          git push
