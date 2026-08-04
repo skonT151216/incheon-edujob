@@ -43,6 +43,7 @@ button{font-family:inherit;cursor:pointer}
 .navlink{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--tx2);
   border:1px solid var(--line);border-radius:8px;padding:7px 10px;flex:none}
 .stamp{font-size:12.5px;color:var(--tx3);flex:none}
+.stamp.stale{color:var(--warn);font-weight:600}
 @media(max-width:820px){.top-in .sbox{display:none}.stamp{display:none}}
 
 .msearch{display:none;padding:10px 16px 0;max-width:1180px;margin:0 auto}
@@ -240,9 +241,20 @@ function writeURL(){
   history.replaceState(null, '', qs ? '?' + qs : location.pathname);
 }
 
+// 학교 일정은 한국 날짜로 돌아가니, 보는 사람이 어느 시간대에 있든 KST 기준으로 센다.
+// getTime()은 이미 UTC 기준이고 toISOString()도 UTC로 찍는다. 9시간만 더하면 KST 날짜다.
+// getTimezoneOffset()까지 더하면 한국 PC에서 하루 뒤로 밀린다.
+function kstToday(){
+  return new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+}
+
 function prep(){
-  TODAY = D.today;
+  // 수집 때 박아 둔 날짜와 지금 날짜 중 나중 것을 쓴다. 갱신이 며칠 멈춰도 이미 마감된
+  // 공고가 '모집 중'으로 남지 않는다. 둘 중 나중 것이라, 브라우저 시계가 과거로
+  // 틀어져 있어도 마감된 건이 되살아나지는 않는다.
+  TODAY = D.today > kstToday() ? D.today : kstToday();
   for(const it of D.items){
+    it.x = it.due ? it.due < TODAY : false;   // 마감 여부를 여는 날짜로 다시 센다
     it._dd = it.due ? dday(it.due, TODAY) : null;
     it._txt = (it.t + ' ' + it.school + ' ' + it.job + ' ' + it.subject.join(' ') + ' ' +
                it.gu + ' ' + it.level).toLowerCase();
@@ -250,7 +262,10 @@ function prep(){
   for(const it of D.pre){
     it._txt = (it.t + ' ' + it.school + ' ' + it.subject.join(' ')).toLowerCase();
   }
-  $('stamp').textContent = D.built + ' 갱신';
+  // 수집이 멈춘 걸 모르고 보면 이미 마감된 자리를 붙들게 된다. 하루 이상 밀리면 알린다.
+  const lag = dday(TODAY, D.today);
+  $('stamp').textContent = D.built + ' 갱신' + (lag >= 1 ? ` · ${lag}일 전 자료` : '');
+  $('stamp').classList.toggle('stale', lag >= 1);
   const live = D.items.filter(x => !x.x);
   $('s1').textContent = live.length.toLocaleString();
   $('s2').textContent = live.filter(x => x._dd !== null && x._dd <= 3).length;
